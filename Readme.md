@@ -12,6 +12,7 @@ the same local network.
 1. First download and install [SMSGateway-offline.apk](https://github.com/lenard123/SMSGateway-Offline/raw/master/app/build/bin/app.apk) into your android Phone.
 2. Open the app and start the server.
 3. done.
+
 ![Screenshot 1](https://github.com/lenard123/SMSGateway-Offline/raw/master/images/Screenshot1.png "Screenshot 1")
 
 ## HOW TO USE
