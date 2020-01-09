@@ -155,11 +155,14 @@ public class HttpServer implements Runnable
 				String key = params[i].split("\\=")[0];
 				String value = "";
 				if (params[i].split("\\=").length > 1){
-					value = params[i].split("\\=")[1];
+					value = decodeValue(params[i].split("\\=")[1]);
 				}
 				res.put(key, value);
 			}
 		}
 		return res;
 	}
+	public static String decodeValue(String value) {
+        return URLDecoder.decode(value);
+    }
 }
