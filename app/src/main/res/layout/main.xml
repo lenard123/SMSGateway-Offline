@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="wrap_content"
+	android:layout_height="match_parent"
+	android:background="#F4F4F4"
+	android:layout_marginBottom="0dp">
+
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:padding="15dp"
+		android:background="@drawable/header">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="SMSGateway Offline"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:textColor="#FFFFFF"
+			android:textSize="30sp"/>
+
+		<View
+			android:background="?android:attr/dividerVertical"
+			android:layout_width="match_parent"
+			android:layout_height="1dp"/>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="version 0.1"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:textColor="#DBDBDB"/>
+
+		<LinearLayout
+			android:orientation="horizontal"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="#DBDBDB"
+				android:text="Service Status: "
+				android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Not Running"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:textColor="#FF0000"
+				android:id="@+id/status"/>
+
+		</LinearLayout>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Turn your mobile into an SMS service provider"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:textColor="#DBDBDB"/>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:padding="10dp">
+
+		<ScrollView
+			android:layout_width="match_parent"
+			android:layout_height="200dp">
+
+			<LinearLayout
+				android:orientation="vertical"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:background="#000000"
+				android:padding="5dp"
+				android:minHeight="200dp">
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:textAppearance="?android:attr/textAppearanceSmall"
+					android:textColor="#FFFFFF"
+					android:id="@+id/logs"/>
+
+			</LinearLayout>
+
+		</ScrollView>
+
+	</LinearLayout>
+
+	<Button
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="Start Server"
+		android:id="@+id/start"
+		android:layout_marginLeft="10dp"
+		android:layout_marginRight="10dp"
+		android:textColor="#00FF00"
+		android:padding="10dp"
+		android:textSize="20dp"
+		android:background="@drawable/green_button"/>
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Example of request:"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:textColor="#4A4A4A"
+		android:layout_marginTop="10dp"
+		android:layout_marginLeft="10dp"/>
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="http://0.0.0.0:8080?number=1234&amp;message=Test"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_marginLeft="10dp"
+		android:layout_marginRight="10dp"
+		android:textColor="#000000"/>
+
+</LinearLayout>
+
