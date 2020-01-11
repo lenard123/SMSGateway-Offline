@@ -159,6 +159,7 @@ public class HttpServer implements Runnable
 	private void writeResponse(String body){
 		PrintWriter pw = new PrintWriter(os);
 		pw.println("HTTP/1.0 200 OK");
+		pw.println("Content-Type: application/json");
 		pw.println("Content-Length: "+body.length());
 		pw.println("");
 		pw.print(body);
