@@ -28,7 +28,7 @@ class SmsGateway{
             if ($res->status) {
                 return $res->status;
             } else {
-                return INVALID_HOST;
+                return SmsGateway::INVALID_HOST;
             }
         }
     }
