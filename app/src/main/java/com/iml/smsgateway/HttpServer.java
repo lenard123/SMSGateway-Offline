@@ -1,10 +1,10 @@
 package com.iml.smsgateway;
-import android.content.*;
-import java.net.*;
-import java.io.*;
-import android.app.*;
-import java.util.*;
+import android.net.wifi.*;
 import android.telephony.gsm.*;
+import java.io.*;
+import java.net.*;
+import java.util.*;
+
 
 public class HttpServer implements Runnable
 {
@@ -17,8 +17,7 @@ public class HttpServer implements Runnable
 	public final static int RESPONSE_SUCCESS = 2;
 	
 	public final static int PORT = 8080;
-	
-	
+	//public static String ip_address = "127.0.0.1";	
 	
 	private static int status = 1;
 	public static MainActivity activity;
@@ -41,6 +40,24 @@ public class HttpServer implements Runnable
 		}
 	}
 	
+	public static String getHost()
+	{
+		try {
+			for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements();) {
+				NetworkInterface intf = en.nextElement();
+				for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements();) {
+					InetAddress inetAddress = enumIpAddr.nextElement();
+					if (!inetAddress.isLoopbackAddress() && inetAddress instanceof Inet4Address) {
+						return inetAddress.getHostAddress();
+					}
+				}
+			}
+		} catch (SocketException ex) {
+			ex.printStackTrace();
+		}
+		return "127.0.0.1";
+	}
+	
 	
 	public static int getStatus()
 	{
@@ -51,6 +68,7 @@ public class HttpServer implements Runnable
 	public static void stopServer()
 	{
 		activity.addLogs("Stopping server");
+		activity.showIP();
 		status = STATUS_STOP;
 		try
 		{
@@ -76,7 +94,9 @@ public class HttpServer implements Runnable
 					app.addLogs("Starting Server");
 					HttpServer.status = STATUS_STARTING;
 					try {
+						
 						HttpServer.server = new ServerSocket(PORT);
+						app.showIP();
 						HttpServer.status = STATUS_RUNNING;
 						app.addLogs("Server running on port "+PORT);
 						app.stopButton();

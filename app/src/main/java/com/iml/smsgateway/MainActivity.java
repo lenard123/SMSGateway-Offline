@@ -22,6 +22,7 @@ public class MainActivity extends Activity
         setContentView(R.layout.main);
 		
 		addLogs(logs);
+		showIP();
 		
 		start = (Button) findViewById(R.id.start);
 		status = (TextView) findViewById(R.id.status);
@@ -102,5 +103,26 @@ public class MainActivity extends Activity
 			});
 		
 		
+	}
+	
+	public void showIP()
+	{
+		//final MainActivity app = this;
+		runOnUiThread(new Runnable(){
+
+				@Override
+				public void run()
+				{
+					// TODO: Implement this method
+					String ip = HttpServer.getHost();
+					int port = HttpServer.PORT;
+					String sample = "http://"+ip+":"+port+"?number=1234&message=test";
+					TextView host = (TextView) findViewById(R.id.host);
+					host.setText(ip);
+					TextView example = (TextView) findViewById(R.id.sample);
+					example.setText(sample);
+					
+				}
+			});
 	}
 }
