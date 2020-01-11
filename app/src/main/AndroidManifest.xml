@@ -3,6 +3,7 @@
     package="com.iml.smsgateway" >
 	<uses-permission android:name= "android.permission.INTERNET" ></uses-permission>
     <uses-permission android:name="android.permission.SEND_SMS"></uses-permission>
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
 	<application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
