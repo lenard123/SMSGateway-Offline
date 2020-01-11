@@ -33,3 +33,21 @@ axios.get('http://0.0.0.0:8080',{
     console.log(err)
 })
 ```
+
+### Using PHP
+
+First download [SmsGateway.php](https://github.com/lenard123/SMSGateway-Offline/blob/master/API/PHP/SmsGateway.php) and add it to your project.
+
+```php
+<?php
+
+//Require the SmsGateway.php
+require_once "SmsGateway.php";
+
+//Instantiate the Object and setup the host
+$sms = new SmsGateway("192.168.43.1");
+
+//send sms
+$sms->sendMessage("8080", "Testing");
+
+```
