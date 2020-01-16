@@ -1,10 +1,13 @@
 package com.iml.smsgateway;
+
 import android.net.wifi.*;
 import android.telephony.gsm.*;
 import java.io.*;
 import java.net.*;
 import java.util.*;
-
+import android.support.v4.app.NotificationCompat;
+import android.app.*;
+import android.content.*;
 
 public class HttpServer implements Runnable
 {
@@ -25,6 +28,7 @@ public class HttpServer implements Runnable
 	private Socket client;
 	private OutputStream os;
 	private InputStream is;
+	private static NotificationManager nm;
 	
 	public HttpServer(Socket socket)
 	{
@@ -58,6 +62,27 @@ public class HttpServer implements Runnable
 		return "127.0.0.1";
 	}
 	
+	public static void showNotification()
+	{
+		NotificationCompat.Builder mbuilder = new NotificationCompat.Builder(activity);
+		mbuilder.setContentTitle("SMSGateway");
+		mbuilder.setContentText("Server is running on port: 8080");
+		mbuilder.setSmallIcon(R.drawable.ic_launcher);
+		
+		Intent x = new Intent(activity, MainActivity.class);
+		
+		TaskStackBuilder tsb = TaskStackBuilder.create(activity);
+		tsb.addParentStack(MainActivity.class);
+		tsb.addNextIntent(x);
+		
+	
+		PendingIntent pi = tsb.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+		mbuilder.setContentIntent(pi);
+	
+		
+		nm = (NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE);
+		nm.notify(100, mbuilder.build());
+	}
 	
 	public static int getStatus()
 	{
@@ -70,6 +95,7 @@ public class HttpServer implements Runnable
 		activity.addLogs("Stopping server");
 		activity.showIP();
 		status = STATUS_STOP;
+		nm.cancelAll();
 		try
 		{
 			server.close();
@@ -92,6 +118,7 @@ public class HttpServer implements Runnable
 					// TODO: Implement this method
 					HttpServer.activity = app;
 					app.addLogs("Starting Server");
+					showNotification();
 					HttpServer.status = STATUS_STARTING;
 					try {
 						
