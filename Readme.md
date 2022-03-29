@@ -48,6 +48,6 @@ require_once "SmsGateway.php";
 $sms = new SmsGateway("192.168.43.1");
 
 //send sms
-$sms->sendMessage("8080", "Testing");
+$sms->sendMessage("09181234567", "Testing");
 
 ```
